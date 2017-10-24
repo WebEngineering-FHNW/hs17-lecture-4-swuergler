@@ -16,5 +16,7 @@
          class="${hasError(model, name) ? 'error' : ''}"
          title="${g.message(error: findError(model, name)) }"
 
+         onchange="validate(this); "
+
   />
 </div>

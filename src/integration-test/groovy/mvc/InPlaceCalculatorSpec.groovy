@@ -50,18 +50,18 @@ class InPlaceCalculatorSpec extends GebSpec {
             go '/InPlaceCalculator.html'
             $("form").en   = 3.0
             $("form").exam = 3.0
-        when:
+        when: "erster roundtrip ist noch mit click!"
             $("input", type: "submit").click()
         then: "we should have a clean, valid state to start from"
             $("#en").attr('class') == ""
         when: "we enter some invalid value _without_ submitting"
-//            def message = withAlert {
+        def message = withAlert {
                 $("form").en = 0.9
-//            }
+        }
         then: "the in-place JS logic should kick in"
-//            $("#en").attr('class') == "error"
-//            message == "en value needs to be at least 1.0"
-//            $("#en").focused
+            $("#en").attr('class') == "error"
+            message == "en value needs to be at least 1.0"
+            $("#en").focused
     }
 
 
